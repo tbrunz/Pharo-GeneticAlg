@@ -13,7 +13,7 @@ Class {
 }
 
 { #category : #random }
-GAObject >> checkForRandomNumber [
+GAObject >> checkForRandomGenerator [
 	"Ensure that a random number generator has been set."
 	
 	self 
@@ -22,13 +22,13 @@ GAObject >> checkForRandomNumber [
 ]
 
 { #category : #accessing }
-GAObject >> randomGen [
+GAObject >> randomGenerator [
 
 	^ randomGenerator
 ]
 
 { #category : #accessing }
-GAObject >> randomGen: randomNumberGenerator [
+GAObject >> randomGenerator: randomNumberGenerator [
 
 	randomGenerator := randomNumberGenerator
 ]
