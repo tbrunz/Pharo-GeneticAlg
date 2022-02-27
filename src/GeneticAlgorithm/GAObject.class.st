@@ -12,6 +12,15 @@ Class {
 	#category : #'GeneticAlgorithm-Core'
 }
 
+{ #category : #random }
+GAObject >> checkForRandomNumber [
+	"Ensure that a random number generator has been set."
+	
+	self 
+		assert: [ randomGenerator notNil ]
+		description: 'Need to provide a random number generator'
+]
+
 { #category : #accessing }
 GAObject >> randomGen [
 
@@ -22,4 +31,11 @@ GAObject >> randomGen [
 GAObject >> randomGen: randomNumberGenerator [
 
 	randomGenerator := randomNumberGenerator
+]
+
+{ #category : #random }
+GAObject >> randomNumber [
+	"Return a random number between 0.0 and 1.0."
+	
+	^ randomGenerator next
 ]
