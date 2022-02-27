@@ -7,7 +7,7 @@ Class {
 	#name : #GAObject,
 	#superclass : #Object,
 	#instVars : [
-		'randomGen'
+		'randomGenerator'
 	],
 	#category : #'GeneticAlgorithm-Core'
 }
@@ -15,11 +15,11 @@ Class {
 { #category : #accessing }
 GAObject >> randomGen [
 
-	^ randomGen
+	^ randomGenerator
 ]
 
 { #category : #accessing }
 GAObject >> randomGen: randomNumberGenerator [
 
-	randomGen := randomNumberGenerator
+	randomGenerator := randomNumberGenerator
 ]
