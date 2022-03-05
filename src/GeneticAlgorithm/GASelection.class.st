@@ -16,13 +16,13 @@ Class {
 	#category : #'GeneticAlgorithm-Core'
 }
 
-{ #category : #accessing }
+{ #category : #validating }
 GASelection >> checkIfEngineSet [
 
 	^ self assert: [ engine notNil ] description: 'Need to set the GA Engine'
 ]
 
-{ #category : #accessing }
+{ #category : #validating }
 GASelection >> checkIfInitialPopulationSet [
 
 	self assert: [ initialPopulation notNil ] 
@@ -111,7 +111,7 @@ GASelection >> fittest [
 	^ fittest
 ]
 
-{ #category : #accessing }
+{ #category : #creating }
 GASelection >> initialPopulation: populationAsIndividuals [
 
 	initialPopulation := populationAsIndividuals .

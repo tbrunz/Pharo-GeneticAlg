@@ -130,6 +130,24 @@ GAEngine >> fitnessBlock: oneArgBlock [
 	fitnessBlock := oneArgBlock
 ]
 
+{ #category : #viewing }
+GAEngine >> gtInspectorLogsIn: composite [ 
+
+	<gtInspectorPresentiationOrder: -5>
+	composite list 
+		title: 'Logs';
+		display: [ self logs ]
+]
+
+{ #category : #viewing }
+GAEngine >> gtInspectorViewIn: composite [ 
+	
+	<gtInspectorPresentationOrder: -10>
+	composite roassal2
+		title: 'View';
+		initializeView: [ self visualize ]
+]
+
 { #category : #initialization }
 GAEngine >> initialize [ 
 
@@ -328,4 +346,46 @@ GAEngine >> shouldTerminate [
 	
 	logs ifEmpty: [ ^ false ] .
 	^ terminationBlock value
+]
+
+{ #category : #viewing }
+GAEngine >> visualize [ 
+	"Create a visualization of the population evolution."
+	
+	| g d |
+	g := RTGrapher new.
+	d := RTData new.
+	d label: 'Best Fitness'.
+	d interaction popupText: [ :assoc | assoc value bestFitness ] .
+	d connectColor: Color blue.
+	d noDot.
+	d points: self logs.
+	d y: #bestFitness.
+	d x: #generationNumber.
+	g add: d.
+	
+	d := RTData new.
+	d label: 'Worst Fitness'.
+	d interaction popupText: [ :assoc | assoc value worstFitness ] .
+	d connectColor: Color red.
+	d noDot.
+	d points: self logs.
+	d y: #worstFitness.
+	d x: #generationNumber.
+	g add: d.
+	
+	d := RTData new.
+	d label: 'Average Fitness'.
+	d interaction popupText: [ :assoc | assoc value averageFitness ] .
+	d connectColor: Color green.
+	d noDot.
+	d points: self logs.
+	d y: #averageFitness.
+	d x: #generationNumber.
+	g add: d.
+	
+	g legend addText: 'Fitness Evolution'.
+	g axisY title: 'Fitness'.
+	g axisX noDecimal; title: 'Generation'.
+	^ g 
 ]

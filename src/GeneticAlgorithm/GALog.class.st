@@ -8,8 +8,8 @@ Class {
 		'generationNumber',
 		'timeToProduceGeneration',
 		'fittestIndividual',
-		'worseFitness',
-		'averageFitness'
+		'averageFitness',
+		'worstFitness'
 	],
 	#category : #'GeneticAlgorithm-Core'
 }
@@ -80,13 +80,13 @@ GALog >> timeToProduceGeneration: timeAsAnInteger [
 ]
 
 { #category : #accessing }
-GALog >> worseFitness [
+GALog >> worstFitness [
 
-	^ worseFitness
+	^ worstFitness
 ]
 
 { #category : #accessing }
 GALog >> worstFitness: aFitnessValue [
 
-	worseFitness := aFitnessValue
+	worstFitness := aFitnessValue
 ]
