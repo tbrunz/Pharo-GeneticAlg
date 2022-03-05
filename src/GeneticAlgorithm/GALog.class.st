@@ -86,7 +86,7 @@ GALog >> worseFitness [
 ]
 
 { #category : #accessing }
-GALog >> worseFitness: aFitnessValue [
+GALog >> worstFitness: aFitnessValue [
 
 	worseFitness := aFitnessValue
 ]

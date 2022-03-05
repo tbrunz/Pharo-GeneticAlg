@@ -16,7 +16,7 @@ GATournamentSelection >> createNewPopulation [
 	
 	| partnerA partnerB child |
 	population := (1 to: self populationSize) collect: [ :seed | 
-		engine randomNumber: (Random seed: seed).
+		engine randomGenerator: (Random seed: seed).
 		partnerA := self getGoodIndividual .
 		partnerB := self getGoodIndividual .
 		child := self mutate: (self crossover: partnerA with: partnerB) .
