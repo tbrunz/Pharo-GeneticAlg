@@ -88,7 +88,7 @@ GAEngine >> endForMaxNumberOfGenerations: numOfGenerations [
 ]
 
 { #category : #stopping }
-GAEngine >> endIfFitnessIsAbove: aFitnessThreshold [ 
+GAEngine >> endIfFitnessAtOrAbove: aFitnessThreshold [ 
 	"Strategy: End the algorithm run if the best fitness value exceeds a threshold."
 	
 	terminationBlock := 
@@ -248,6 +248,12 @@ GAEngine >> mutationRate: aFloat [
 	"The default is 0.01 (slow)."
 	
 	mutationOperator mutationRate: aFloat .
+]
+
+{ #category : #accessing }
+GAEngine >> numberOfGenes [
+
+	^ numberOfGenes
 ]
 
 { #category : #accessing }
