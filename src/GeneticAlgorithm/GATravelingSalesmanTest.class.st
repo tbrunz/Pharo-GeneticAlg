@@ -111,3 +111,56 @@ GATravelingSalesmanTest >> testNaiveApproach [
 	g run.
 	g visualize open.
 ]
+
+{ #category : #tests }
+GATravelingSalesmanTest >> testSophisticatedApproach [
+
+	| g result v elements |
+	g := GAEngine new.
+	g endIfNoImprovementFor: 5.
+	g populationSize: 1000.
+	g numberOfGenes: points size.
+	g minimizeComparator.
+	
+	g crossoverOperator: GAOrderedCrossoverOperation new.
+	g mutationOperator: GASwapMutationOperation new.
+	
+	g beforeCreatingInitialIndividual: 
+		[ :randGen | points copy shuffleBy: randGen ].	
+	g createGeneBlock: [ :randGen :index :ind | points at: index ].
+
+	g fitnessBlock: [ :genes | 
+		| distance dist |
+		distance := 0.
+		2 to: genes size do: [ :pointIndex | 
+			dist := (genes at: pointIndex) distanceTo:
+				(genes at: pointIndex - 1).
+			distance := distance + dist ] .
+		distance
+		].
+
+	g run.
+	g visualize open.
+	
+	result := g result.
+	v := RTView new.
+	elements := RTEllipse new 
+		size: 10;
+		color: Color red trans;
+		elementsOn: result .
+	elements @ RTPopup.
+	v addAll: elements.
+	
+	elements do: [ :each | each translateTo: each model ].
+	2 to: result size do: [ :index | 
+		| arrow city1 city2 | 
+		arrow := RTArrowedLine new 
+			color: Color blue;
+			headOffset: 0.8 .
+		city1 := v elementFromModel: (result at: index - 1).
+		city2 := v elementFromModel: (result at: index).
+		v add: (arrow 
+			edgeFrom: city1 to: city2)
+		].
+	v open.
+]

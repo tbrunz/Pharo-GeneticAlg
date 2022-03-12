@@ -239,7 +239,7 @@ GAEngine >> mutate: anIndividual [
 GAEngine >> mutationOperator: aMutationOperator [
 
 	mutationOperator := aMutationOperator .
-	aMutationOperator randomGenerator: randomGenerator .
+	mutationOperator randomGenerator: randomGenerator .
 ]
 
 { #category : #accessing }
