@@ -1,3 +1,6 @@
+"
+Genetic Algorithm classes from Alexandre Bergel's 'Agile AI in Pharo' book.
+"
 Class {
 	#name : #GATravelingSalesmanTest,
 	#superclass : #TestCase,
