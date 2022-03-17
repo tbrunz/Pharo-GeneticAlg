@@ -310,8 +310,9 @@ GAEngine >> run [
 			gen := 0.
 			[ self shouldTerminate ] whileFalse: [ 
 				gen := gen + 1 .
-				bar label: gen asString.
+				bar label: 'Generation ', gen asString.
 				self microPause.
+				
 				thisTime := Time now asSeconds .
 				self produceNewPopulation.
 				
@@ -324,8 +325,10 @@ GAEngine >> run [
 						(compareFitness value: worstFit value: thisFitness) 
 							ifTrue: [ thisFitness ] ifFalse: [ worstFit ]
 					] ).
+				
 				log averageFitness: (population collect: #fitness)
 					average asFloat.
+					
 				log timeToProduceGeneration: Time now asSeconds - thisTime .
 				logs add: log
 				]
