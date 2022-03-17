@@ -12,14 +12,14 @@ Class {
 	#category : #'Creature-Core'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 CVisualElement >> createElement [ 
 	"Inialize the #element variable.  Should be overridden in subclasses."
 	
 	self subclassResponsibility 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 CVisualElement >> element [ 
 	
 	^ element

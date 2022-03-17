@@ -12,14 +12,14 @@ Class {
 	#category : #'Creature-Core'
 }
 
-{ #category : #movement }
+{ #category : #actions }
 CNode >> addForce: aForceAsPoint [ 
 	"Make the node the subject of an external force."
 	
 	force := force + aForceAsPoint .
 ]
 
-{ #category : #movement }
+{ #category : #actions }
 CNode >> beat [
 	"Make the node act according to the force and speed applied."
 	
@@ -30,7 +30,7 @@ CNode >> beat [
 	self translateBy: speedVector .
 ]
 
-{ #category : #movement }
+{ #category : #actions }
 CNode >> checkForCollision: platforms [ 
 	"Verify if the node is on a platform.  If so, set the variable true."
 	
@@ -46,7 +46,7 @@ CNode >> checkForCollision: platforms [
 		].
 ]
 
-{ #category : #initialization }
+{ #category : #accessing }
 CNode >> createElement [ 
 	"Inialize the #element variable."
 	
@@ -58,7 +58,7 @@ CNode >> createElement [
 	element @ RTDraggable .
 ]
 
-{ #category : #movement }
+{ #category : #actions }
 CNode >> gravityForce [
 	"This is a fixed force representing gravity."
 	
@@ -100,14 +100,14 @@ CNode >> resetSpeed [
 	speedVector := 0 @ 0 .
 ]
 
-{ #category : #movement }
+{ #category : #actions }
 CNode >> translateBy: aPoint [ 
 	"Translate the node by an incremental point."
 	
 	element translateBy: aPoint.
 ]
 
-{ #category : #movement }
+{ #category : #actions }
 CNode >> translateTo: aPoint [ 
 	"Translate the node to a new position."
 	
