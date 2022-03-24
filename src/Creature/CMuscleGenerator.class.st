@@ -122,6 +122,12 @@ CMuscleGenerator >> minTime: timeAsInteger [
 	minTime := timeAsInteger
 ]
 
+{ #category : #initialization }
+CMuscleGenerator >> resetSeed [ 
+	
+	randomGenerator := Random seed: 42 .
+]
+
 { #category : #creating }
 CMuscleGenerator >> serializeMuscle: aMuscle [ 
 	"Reply with an array describing the muscle argument."

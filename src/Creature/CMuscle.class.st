@@ -50,6 +50,15 @@ CMuscle >> initialize [
 ]
 
 { #category : #accessing }
+CMuscle >> length [ 
+	"Reply with the muscle's ideal length."
+	
+	^ time < self minTime 
+		ifTrue: [ length1 ] 
+		ifFalse: [ length2 ]
+]
+
+{ #category : #accessing }
 CMuscle >> length1 [
 	"Length of the muscle at the beginning of the cycle."
 

@@ -122,10 +122,40 @@ CCreature >> materialize: arrayOfValues [
 ]
 
 { #category : #accessing }
+CCreature >> muscles [
+
+	^ muscles
+]
+
+{ #category : #accessing }
+CCreature >> nodes [
+
+	^ nodes
+]
+
+{ #category : #accessing }
 CCreature >> numberOfMuscles [ 
 	"Reply with the number of muscles the creature has."
 	
 	^ muscles size
+]
+
+{ #category : #actions }
+CCreature >> position [ 
+	"Reply with the position of the creature."
+	"Position is calculated as the average position of the nodes."
+	
+	^ (self nodes collect: #position) sum / self nodes size
+]
+
+{ #category : #configuring }
+CCreature >> randomlyLocateNodes [ 
+	"Assign each node to a random position."
+	
+	nodes
+		do: [ :node | node translateBy: 
+			(randomGenerator nextInteger: 50) @ (randomGenerator nextInteger: 50)
+			].
 ]
 
 { #category : #actions }
@@ -148,6 +178,13 @@ CCreature >> reachStable [
 ]
 
 { #category : #configuring }
+CCreature >> resetPosition [ 
+	"Relocate the creature to the initial position."
+	
+	self translateTo: (0 @ 0) .
+]
+
+{ #category : #configuring }
 CCreature >> serialize [ 
 	"Serialize the creature into an array of numbers."
 	
@@ -165,4 +202,15 @@ CCreature >> simulateNoise [
 		((randomGenerator nextInteger: 3) - 2) .
 		
 	(nodes atRandom: randomGenerator) translateBy: direction .
+]
+
+{ #category : #actions }
+CCreature >> translateTo: aPoint [ 
+	"Translate a creature to a specified position."
+	
+	| averageCenter delta |
+	averageCenter := self position .
+	delta := aPoint - averageCenter .
+	
+	self nodes do: [ :node | node translateBy: delta ] .
 ]
