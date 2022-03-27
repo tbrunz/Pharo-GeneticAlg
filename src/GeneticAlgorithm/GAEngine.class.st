@@ -357,6 +357,15 @@ GAEngine >> shouldTerminate [
 	^ terminationBlock value
 ]
 
+{ #category : #calculating }
+GAEngine >> timeTaken [ 
+	"Reply with the time taken to compute all generations."
+	
+	| lastLog |
+	lastLog := self logs last .
+	^ lastLog time - self logs first time
+]
+
 { #category : #viewing }
 GAEngine >> visualize [ 
 	"Create a visualization of the population evolution."

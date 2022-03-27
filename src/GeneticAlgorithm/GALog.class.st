@@ -7,6 +7,7 @@ Class {
 	#instVars : [
 		'generationNumber',
 		'timeToProduceGeneration',
+		'time',
 		'fittestIndividual',
 		'averageFitness',
 		'worstFitness'
@@ -57,6 +58,13 @@ GALog >> generationNumber: generationNumberAsInteger [
 	generationNumber := generationNumberAsInteger
 ]
 
+{ #category : #initialization }
+GALog >> initialize [ 
+
+	super initialize .
+	time := DateAndTime now .
+]
+
 { #category : #printing }
 GALog >> printOn: aStream [ 
 	"Print the Log object."
@@ -65,6 +73,12 @@ GALog >> printOn: aStream [
 	aStream nextPut: $< .
 	aStream nextPutAll: fittestIndividual genes asString .
 	aStream nextPut: $> .
+]
+
+{ #category : #accessing }
+GALog >> time [ 
+
+	^ time
 ]
 
 { #category : #accessing }
